@@ -8,39 +8,14 @@ import orjson
 import msgpack
 
 
-def loads_json():
+def load():
     with open('search.json', 'r', encoding='utf-8') as f:
-        return json.loads(f.read())
+        data = f.read()
+    return data
 
 
-def loads_ujson():
-    with open('search.json', 'r', encoding='utf-8') as f:
-        return ujson.loads(f.read())
-
-
-def loads_orjson():
-    with open('search.json', 'rb') as f:
-        return orjson.loads(f.read())
-
-
-def dumps_json(data):
-    return json.dumps(data)
-
-
-def dumps_ujson(data):
-    return ujson.dumps(data, ensure_ascii=False, sort_keys=False, escape_forward_slashes=False)
-
-
-def dumps_orjson(data):
-    return orjson.dumps(data)
-
-
-def dumps_pickle(data):
-    return pickle.dumps(data)
-
-
-def dumps_msgpack(data):
-    return msgpack.dumps(data)
+def load_as_json():
+    return json.loads(load())
 
 
 def encode_test(data):
@@ -57,74 +32,79 @@ def compress_zstd(data):
 
 
 def test_loads_json(benchmark):
-    ret = benchmark(loads_json)
+    data = load()
+    ret = benchmark(json.loads, data)
     assert ret
 
 
 def test_loads_ujson(benchmark):
-    ret = benchmark(loads_ujson)
+    data = load()
+    ret = benchmark(ujson.loads, data)
     assert ret
 
 
 def test_loads_orjson(benchmark):
-    ret = benchmark(loads_orjson)
+    data = load()
+    ret = benchmark(orjson.loads, data)
+    assert ret
+
+
+def test_loads_msgpack(benchmark):
+    data = msgpack.dumps(load_as_json())
+    ret = benchmark(msgpack.loads, data)
     assert ret
 
 
 def test_dumps_json(benchmark):
-    data = loads_json()
-    ret = benchmark(dumps_json, data)
+    data = load_as_json()
+    ret = benchmark(json.dumps, data)
     assert ret
 
 
 def test_dumps_ujson(benchmark):
-    data = loads_json()
-    ret = benchmark(dumps_ujson, data)
+    data = load_as_json()
+    ret = benchmark(ujson.dumps, data)
     assert ret
 
 
 def test_dumps_orjson(benchmark):
-    data = loads_json()
-    ret = benchmark(dumps_orjson, data)
+    data = load_as_json()
+    ret = benchmark(orjson.dumps, data)
     assert ret
 
 
 def test_dumps_pickle(benchmark):
-    data = loads_json()
-    ret = benchmark(dumps_pickle, data)
+    data = load_as_json()
+    ret = benchmark(pickle.dumps, data)
     assert ret
 
 
 def test_dumps_msgpack(benchmark):
-    data = loads_json()
-    ret = benchmark(dumps_msgpack, data)
+    data = load_as_json()
+    ret = benchmark(msgpack.dumps, data)
     assert ret
 
 
 def test_encode(benchmark):
-    data = loads_ujson()
-    data = dumps_ujson(data)
+    data = load()
     ret = benchmark(encode_test, data)
     assert ret
 
 
 def test_compress_zlib(benchmark):
-    data = loads_ujson()
-    data = dumps_ujson(data)
+    data = load()
     ret = benchmark(compress_zlib, data.encode('utf-8'))
     assert ret
 
 
 def test_compress_zstd(benchmark):
-    data = loads_ujson()
-    data = dumps_ujson(data)
+    data = load()
     ret = benchmark(compress_zstd, data.encode('utf-8'))
     assert ret
 
 
 if __name__ == '__main__':
-    data = loads_ujson()
-    data = dumps_ujson(data)
+    data = load()
     print(len(data))
     x = compress_zlib(data.encode('utf-8'))
     print(len(x))

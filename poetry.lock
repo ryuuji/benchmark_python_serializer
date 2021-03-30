@@ -700,6 +700,19 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "pysimdjson"
+version = "3.2.0"
+description = "simdjson bindings for python"
+category = "main"
+optional = false
+python-versions = ">3.4"
+
+[package.extras]
+benchmark = ["pytest", "pytest-benchmark", "orjson", "python-rapidjson", "simplejson", "ujson", "yyjson", "numpy"]
+release = ["m2r", "sphinx", "ghp-import", "bumpversion"]
+test = ["pytest"]
+
+[[package]]
 name = "pytest"
 version = "6.2.2"
 description = "pytest: simple powerful testing with Python"
@@ -855,7 +868,7 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "527eada1580971c2dc9308e2ba1a47c7a77d90ff2451356790e90ff2e7edc8f7"
+content-hash = "995ba202d2b5e17e0e685cff8c2c15600d3dc16ce1c3414aa786c07e24bdb97b"
 
 [metadata.files]
 amqp = [
@@ -1199,6 +1212,27 @@ pygments = [
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
     {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
+]
+pysimdjson = [
+    {file = "pysimdjson-3.2.0-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:775c94608cffab7433a9ac307775ad5b78189b55f5dceffb5024a88b3e978c40"},
+    {file = "pysimdjson-3.2.0-cp35-cp35m-manylinux2014_aarch64.whl", hash = "sha256:c4c8b1a70f85911c0df4ef96a6812460a1212367e207ffa33c7e53543d9f9bb2"},
+    {file = "pysimdjson-3.2.0-cp35-cp35m-manylinux2014_x86_64.whl", hash = "sha256:439188b984533dd4a98cec38afe149e8c69ece7f4dd2c562d70562651b2a35ae"},
+    {file = "pysimdjson-3.2.0-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:55c2e230e5e9aa3ba4250e60aa64e1482576fbdbffbb3eabbf90b25dc77b677c"},
+    {file = "pysimdjson-3.2.0-cp36-cp36m-manylinux2014_aarch64.whl", hash = "sha256:fdb23391a3b665980c4ffe46423b0af7b5b0b18227d688f8bbb5fc5bbe518d35"},
+    {file = "pysimdjson-3.2.0-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:3da4f6f09b4bda9e9783cb5959acba0a54865fc026676c1ba9db9cc2e36f5a14"},
+    {file = "pysimdjson-3.2.0-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:0f33e9a9cb34edc4b81e4eff2125c268f3ff1659d6109c3d02be6066e9d17569"},
+    {file = "pysimdjson-3.2.0-cp37-cp37m-manylinux2014_aarch64.whl", hash = "sha256:e00a927dd04c8edf22bfb3d75096a5c195e894567050f0a089a3fe99127d9fa0"},
+    {file = "pysimdjson-3.2.0-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:0d8bf1ae5c8acd359916a9e6fb1bd293b256f16561d0ea7995537da7f3210d33"},
+    {file = "pysimdjson-3.2.0-cp37-cp37m-win_amd64.whl", hash = "sha256:409fcd92e47b54e107ecb559496665a96b80925239fd647f94d33b0a489b218f"},
+    {file = "pysimdjson-3.2.0-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:ef41ae4b843f4d098075ae4eaf8ce3d87d2a95f7eee36a8bc2768825bf3388e1"},
+    {file = "pysimdjson-3.2.0-cp38-cp38-manylinux2014_aarch64.whl", hash = "sha256:cb1c6ce8d27658a73d597d71886933690663aac1703715ebd35b8706339711cc"},
+    {file = "pysimdjson-3.2.0-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:472e0198e86c99527f7c15bc54e98232ba02181c5f88c416d3ba9c3588975361"},
+    {file = "pysimdjson-3.2.0-cp38-cp38-win_amd64.whl", hash = "sha256:9d99d158597aac4744cefd2a1f638551c75d76d85ccad886ce2b6882d4e14104"},
+    {file = "pysimdjson-3.2.0-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:7d0cb6c5e0365ea1a599dd2b229bf8a0ad2cbd5d2800177d4c33d9da5944561f"},
+    {file = "pysimdjson-3.2.0-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:536a3528e08df74602b8d8e17649f307f6c803ea6ec5bfc0500efd6071d6de89"},
+    {file = "pysimdjson-3.2.0-cp39-cp39-win_amd64.whl", hash = "sha256:f05420a9f4e6c1466ab3c5cc045c30a1d40bce3fdab1c98886ccc42de28ea0da"},
+    {file = "pysimdjson-3.2.0-pp36-pypy36_pp73-macosx_10_9_x86_64.whl", hash = "sha256:6ded4a5d0758d3bf917283bccf5774b6ad1306f71303f54be036d6c1547356f9"},
+    {file = "pysimdjson-3.2.0.tar.gz", hash = "sha256:643baa0941752367761dbc091bf552bf4ca196cf67bf41ef89c90c2db2ec1477"},
 ]
 pytest = [
     {file = "pytest-6.2.2-py3-none-any.whl", hash = "sha256:b574b57423e818210672e07ca1fa90aaf194a4f63f3ab909a2c67ebb22913839"},

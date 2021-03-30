@@ -6,6 +6,7 @@ import zlib
 import zstandard
 import orjson
 import msgpack
+import simdjson
 
 
 def load():
@@ -31,6 +32,13 @@ def compress_zstd(data):
     return cctx.compress(data)
 
 
+cctx2 = zstandard.ZstdCompressor(level=5)
+
+
+def compress_zstd2(data):
+    return cctx2.compress(data)
+
+
 def test_loads_json(benchmark):
     data = load()
     ret = benchmark(json.loads, data)
@@ -52,6 +60,12 @@ def test_loads_orjson(benchmark):
 def test_loads_msgpack(benchmark):
     data = msgpack.dumps(load_as_json())
     ret = benchmark(msgpack.loads, data)
+    assert ret
+
+
+def test_loads_simdjson(benchmark):
+    data = load()
+    ret = benchmark(simdjson.loads, data)
     assert ret
 
 
@@ -100,6 +114,12 @@ def test_compress_zlib(benchmark):
 def test_compress_zstd(benchmark):
     data = load()
     ret = benchmark(compress_zstd, data.encode('utf-8'))
+    assert ret
+
+
+def test_compress_zstd2(benchmark):
+    data = load()
+    ret = benchmark(compress_zstd2, data.encode('utf-8'))
     assert ret
 
 

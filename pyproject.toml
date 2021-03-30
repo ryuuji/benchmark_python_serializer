@@ -13,6 +13,7 @@ ujson = "*"
 pytest-benchmark = "*"
 msgpack = "*"
 orjson = "*"
+pysimdjson = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
 

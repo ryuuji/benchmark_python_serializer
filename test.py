@@ -10,7 +10,7 @@ import simdjson
 
 
 def load():
-    with open('search.json', 'r', encoding='utf-8') as f:
+    with open('debug.json', 'r', encoding='utf-8') as f:
         data = f.read()
     return data
 

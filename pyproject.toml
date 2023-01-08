@@ -6,7 +6,6 @@ authors = ["Ryuuji Yoshimoto <ryuuji@calil.jp>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-invenio = "*"
 pytest = "*"
 zstandard = "*"
 ujson = "*"

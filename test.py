@@ -6,7 +6,6 @@ import zlib
 import zstandard
 import orjson
 import msgpack
-import simdjson
 
 
 def load():
@@ -61,13 +60,6 @@ def test_loads_msgpack(benchmark):
     data = msgpack.dumps(load_as_json())
     ret = benchmark(msgpack.loads, data)
     assert ret
-
-
-def test_loads_simdjson(benchmark):
-    data = load()
-    ret = benchmark(simdjson.loads, data)
-    assert ret
-
 
 def test_dumps_json(benchmark):
     data = load_as_json()

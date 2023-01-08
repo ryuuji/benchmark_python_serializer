@@ -13,7 +13,10 @@ ujson = "*"
 pytest-benchmark = "*"
 msgpack = "*"
 orjson = "*"
-pysimdjson = "^3.2.0"
+lxml = "^4.6.3"
+isbnlib = "^3.10.7"
+beautifulsoup4 = "^4.9.3"
+xmlsq = "^0.9.0-alpha.1"
 
 [tool.poetry.dev-dependencies]
 
